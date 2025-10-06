@@ -1,627 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bavireddy's Wedding Invitation</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles and Inter font */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-        
-        /* Define color variables for easier theming */
-        :root {
-            --primary-red: #9e2a2b; /* Deep Red/Maroon */
-            --accent-gold: #c9a744; /* Elegant Gold */
-            --text-dark: #333333;
-            /* BRIGHTER PETAL COLOR: Soft rose/gold, highly visible */
-            --petal-color: rgba(230, 190, 190, 0.95); 
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join us to celebrate the wedding of Chi. La. Sou. Ramanitha & Chi. Siva Krishna on 16th October 2025. Response and details inside." />
+  <title>Bavireddy's Wedding Invitation 💍</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Pure white background for maximum presentation */
-            min-height: 100vh;
-            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
-        }
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-red);
-        }
-        .invitation-card {
-            background-color: #ffffff;
-            /* Enhanced shadow and gold border for a framed, beautiful look */
-            box-shadow: 0 0 0 10px rgba(201, 167, 68, 0.1), 0 15px 30px rgba(0, 0, 0, 0.1); 
-            border: 4px solid var(--accent-gold); /* Gold border for attraction */
-            transition: transform 0.3s ease;
-        }
-        .invitation-card:hover {
-            transform: translateY(-2px);
-        }
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: block;
-        }
-        .name-highlight {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-red);
-        }
-        .nav-button {
-            color: var(--text-dark);
-        }
-        .nav-button.active {
-            border-bottom: 3px solid var(--primary-red);
-            color: var(--primary-red);
-            font-weight: 700;
-        }
-        .sumuhurtham-date {
-            color: var(--primary-red);
-        }
-        .menu-item-card {
-            border-left: 5px solid var(--accent-gold);
-        }
-        .rsvp-container {
-            min-height: 200px;
-        }
-        
-        /* --- Removed .menu-bg and .menu-overlay CSS rules --- */
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        /* --- Global Animation Containers --- */
-        #petal-container, #balloon-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Allow clicks to pass through */
-            z-index: 0; /* Behind everything else */
-            overflow: hidden;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
-        /* --- Flower Petal Animation Styles --- */
-        .petal {
-            position: absolute;
-            background-color: var(--petal-color);
-            border-radius: 50%;
-            opacity: 0.95; /* High fixed opacity */
-            /* Ensure continuous, infinite loop */
-            animation: fall linear infinite, shake alternate infinite; 
-        }
+  <style>
+    :root {
+      --primary-red: #a4161a;
+      --accent-gold: #e9b949;
+      --accent-pink: #f6bdc0;
+      --text-dark: #2b2b2b;
+      --petal-color: rgba(255, 192, 203, 0.85);
+    }
 
-        /* Animation for falling (Top to Bottom) */
-        @keyframes fall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #fff4f4 0%, #fffbe6 100%);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
 
-        /* Animation for horizontal drifting/shaking */
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(15px); }
-            100% { transform: translateX(-15px); }
-        }
-        
-        /* --- Balloon Animation Styles --- */
-        .balloon {
-            position: absolute;
-            width: 30px;
-            height: 45px; /* Oval shape */
-            /* Basic shape for a balloon */
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; 
-            opacity: 0.7;
-            animation: float linear infinite; 
-            box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.1); /* Simple highlight/shadow */
-            position: relative; /* Needed to anchor the string pseudo-element */
-        }
-        
-        /* Balloon String (Rope) */
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -35px; /* Starting point below the balloon base */
-            left: 50%;
-            /* Combined transform for initial positioning, swing applied in JS */
-            transform: translateX(-50%); 
-            width: 1px; /* Thin black rope */
-            height: 50px; /* Length of the rope */
-            background-color: black;
-            z-index: -1; /* Ensure string is visually under the balloon body */
-            animation: swing 3s ease-in-out infinite; /* Added subtle swinging motion */
-        }
-        
-        /* Animation for subtle rope swinging */
-        @keyframes swing {
-            0% { transform: translateX(-50%) rotate(0deg); }
-            50% { transform: translateX(-50%) rotate(3deg); } /* Swing slightly right */
-            100% { transform: translateX(-50%) rotate(0deg); }
-        }
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-red);
+    }
 
-        /* Animation for floating (Bottom to Top with sway) */
-        @keyframes float {
-            0% { transform: translate(0vw, 100vh) scale(0.8); } /* Start far below, scale 0.8 */
-            30% { transform: translate(10vw, 30vh) scale(0.9); } /* Drift right slightly */
-            70% { transform: translate(-10vw, -30vh) scale(1.0); } /* Drift left slightly */
-            100% { transform: translate(0vw, -100vh) scale(1.1); } /* End far above, scale 1.1 */
-        }
+    .invitation-card {
+      background: white;
+      border: 3px solid var(--accent-gold);
+      border-radius: 1.25rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .invitation-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    }
 
-    </style>
+    .nav-button.active {
+      color: var(--primary-red);
+      font-weight: 700;
+      border-bottom: 3px solid var(--accent-gold);
+    }
+
+    #petal-container, #balloon-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      background-color: var(--petal-color);
+      border-radius: 50%;
+      animation: fall linear infinite, drift ease-in-out infinite;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-10vh); }
+      to { transform: translateY(110vh); }
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(20px); }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 55px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0.8;
+      animation: floatUp linear infinite;
+      box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 1px;
+      height: 50px;
+      background: black;
+      transform: translateX(-50%);
+      animation: swing 3s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-120vh); }
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: translateX(-50%) rotate(0deg); }
+      50% { transform: translateX(-50%) rotate(5deg); }
+    }
+
+    #message-box {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    #message-box.visible {
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body>
-    
-    <!-- Flower Petal Container (Background Layer) -->
-    <div id="petal-container"></div>
-    <!-- Balloon Container (New Layer) -->
-    <div id="balloon-container"></div>
-    
-    <!-- FIX: Added bg-white to the main app container to mask the fixed background animations -->
-    <div id="app" class="max-w-xl mx-auto p-4 md:p-8 relative z-10 bg-white">
-        
-        <!-- Header / Navigation -->
-        <header class="text-center py-6 sticky top-0 bg-white z-20 shadow-lg rounded-b-2xl mb-4">
-            <h1 class="main-title text-3xl md:text-4xl font-extrabold">Bavireddy's Wedding</h1>
-            <nav class="flex justify-around mt-4 border-b border-gray-200">
-                <button onclick="navigate('invitation', this)" id="nav-invitation" class="nav-button active px-2 py-3 text-sm font-semibold transition duration-150">Invitation</button>
-                <button onclick="navigate('details', this)" id="nav-details" class="nav-button px-2 py-3 text-sm font-semibold transition duration-150">Details</button>
-                <button onclick="navigate('menu', this)" id="nav-menu" class="nav-button px-2 py-3 text-sm font-semibold transition duration-150">Menu</button>
-                <button onclick="navigate('rsvp', this)" id="nav-rsvp" class="nav-button px-2 py-3 text-sm font-semibold transition duration-150">RSVP</button>
-            </nav>
-        </header>
+  <!-- Background Effects -->
+  <div id="petal-container"></div>
+  <div id="balloon-container"></div>
 
-        <!-- Main Content Area -->
-        <main class="mt-4">
-            
-            <!-- Page 1: Invitation -->
-            <section id="invitation" class="page active invitation-card p-8 rounded-2xl">
-                <div class="text-center space-y-4">
-                    <p class="text-xs text-gray-500 tracking-widest font-medium">Srirasthu | Subhamasthu | Avighnamasthu</p>
-                    
-                    <h2 class="main-title text-4xl font-extrabold mt-2">Wedding Invitation</h2>
-                    
-                    <p class="mt-4 text-sm md:text-base text-gray-700 leading-relaxed">
-                        With the grace and blessings of the Almighty,
-                        <br>
-                        Sri Bavireddy Brahmam and Smt. Venkata Sudha
-                        <br>
-                        Solicit your gracious presence and blessings with your family and friends on the auspicious occasion of the marriage of our Elder Daughter
-                    </p>
+  <!-- App Container -->
+  <div id="app" class="max-w-xl mx-auto p-4 md:p-8 relative z-10 bg-white bg-opacity-95 shadow-2xl rounded-2xl my-6">
 
-                    <h3 class="text-4xl md:text-5xl font-bold pt-4 name-highlight">Chi. La. Sou. Ramanitha</h3>
-                    <p class="text-xs text-gray-500 italic">(Granddaughter of Sri Chinna Ankarao & Smt.Ramanujamma)</p>
-                    <p class="text-lg text-gray-700 font-semibold">with</p>
-                    <h3 class="text-4xl md:text-5xl font-bold name-highlight">Chi. Siva Krishna</h3>
-                    <p class="text-xs text-gray-500 italic">(Only Son of Sri Pasupuleti Sambasiva Rao & Smt.Leela,)</p>
+    <!-- Header -->
+    <header class="text-center py-6 sticky top-0 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 backdrop-blur-md z-20 shadow-lg rounded-b-2xl mb-4">
+      <h1 class="main-title text-4xl font-bold">💒 Bavireddy’s Wedding</h1>
+      <nav class="flex justify-around mt-4 border-b border-yellow-400">
+        <button onclick="navigate('invitation', this)" id="nav-invitation" class="nav-button active px-2 py-3 text-sm font-semibold">Invitation</button>
+        <button onclick="navigate('details', this)" id="nav-details" class="nav-button px-2 py-3 text-sm font-semibold">Details</button>
+        <button onclick="navigate('menu', this)" id="nav-menu" class="nav-button px-2 py-3 text-sm font-semibold">Menu</button>
+        <button onclick="navigate('response', this)" id="nav-response" class="nav-button px-2 py-3 text-sm font-semibold">Response</button>
+      </nav>
+    </header>
 
-                    <div class="border-t border-dashed border-gray-300 mx-auto w-1/3 my-6"></div>
+    <!-- Pages -->
+    <main class="mt-4 space-y-8">
 
-                    <p class="text-base font-medium text-gray-800">
-                        Sumuhurtham:
-                        <br>
-                        <span class="text-2xl font-extrabold sumuhurtham-date">Thursday, 16th October 2025</span>
-                        <br>
-                        at <span class="text-2xl font-extrabold sumuhurtham-date">8:18 p.m.</span>
-                    </p>
-                    <p class="text-xs text-gray-600 italic">Magha Nakshatram, Vrushabha Lagnam</p>
+      <!-- Invitation -->
+      <section id="invitation" class="page active invitation-card p-8">
+        <div class="text-center space-y-4">
+          <p class="text-xs text-gray-500 tracking-widest">Srirasthu | Subhamasthu | Avighnamasthu</p>
+          <h2 class="main-title text-3xl font-extrabold">Wedding Invitation</h2>
+          <p>With the blessings of the Almighty, <br><b>Sri Bavireddy Brahmam</b> & <b>Smt. Venkata Sudha</b><br>cordially invite you to the marriage of their daughter</p>
+          <h3 class="text-4xl font-bold text-red-700">Chi. La. Sou. Ramanitha</h3>
+          <p class="italic text-sm text-gray-500">(Granddaughter of Sri Chinna Ankarao & Smt. Ramanujamma)</p>
+          <p>with</p>
+          <h3 class="text-4xl font-bold text-red-700">Chi. Siva Krishna</h3>
+          <p class="italic text-sm text-gray-500">(Son of Sri Pasupuleti Sambasiva Rao & Smt. Leela)</p>
+          <hr class="my-4 border-dashed border-yellow-400 w-1/2 mx-auto">
+          <p><b>Sumuhurtham:</b><br><span class="text-xl font-semibold text-red-700">Thursday, 16th October 2025 — 8:18 PM</span><br><span class="text-gray-600 text-sm italic">Magha Nakshatram, Vrushabha Lagnam</span></p>
+        </div>
+      </section>
 
-                    <p class="mt-8 text-sm text-gray-500 font-medium">With Best Compliments from Near & Dear</p>
-                    <p class="text-xl font-semibold text-gray-800">Bavireddy Brahmam & Venkata Sudha</p>
+      <!-- Details -->
+      <section id="details" class="page invitation-card p-8 hidden">
+        <h2 class="main-title text-2xl text-center mb-4">Event Schedule & Location</h2>
+        <div class="space-y-4">
+          <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
+            <h3 class="font-bold text-lg">Sumuhurtham</h3>
+            <p>Thursday, 16th October 2025 — 8:18 PM</p>
+          </div>
+          <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
+            <h3 class="font-bold text-lg">Dinner</h3>
+            <p>Thursday, 16th October 2025 — 8:00 PM onwards</p>
+          </div>
+          <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
+            <h3 class="font-bold text-lg">Venue</h3>
+            <p>Sai Kalyana Mandapam, Percharla Village,<br>Medikonduru, Guntur District</p>
+            <a href="https://maps.google.com/?q=Sai+Kalyana+Mandapam+Percharla" target="_blank" class="text-blue-600 underline text-sm">📍 Get Directions</a>
+          </div>
+        </div>
+      </section>
 
-                </div>
-            </section>
+      <!-- Menu -->
+      <section id="menu" class="page invitation-card p-8 hidden">
+        <h2 class="main-title text-2xl text-center mb-4">A Grand Feast 🍽</h2>
+        <p class="text-center italic text-gray-600 mb-4">Traditional South Indian vegetarian spread.</p>
+        <ul class="list-disc ml-6 space-y-2">
+          <li><b>Starters:</b> Masala Vada, Punugulu, Paneer Tikka, Crispy Corn</li>
+          <li><b>Main Course:</b> South Indian Meals, Rotis, Pulihara</li>
+          <li><b>Curries:</b> Tomato Pappu, Gutti Vankaya, Paneer Butter Masala</li>
+          <li><b>Desserts:</b> Badam Kheer, Gulab Jamun, Ice Cream, Lassi</li>
+        </ul>
+        <p class="text-center mt-4 font-semibold text-pink-700 italic">...and many more items present 🍛🎊</p>
+      </section>
 
-            <!-- Page 2: Event Details -->
-            <section id="details" class="page invitation-card p-8 rounded-2xl">
-                <h2 class="main-title text-3xl font-bold text-center mb-6">Event Schedule & Location</h2>
+      <!-- Response -->
+      <section id="response" class="page invitation-card p-8 hidden">
+        <h2 class="main-title text-2xl text-center mb-4">Response 💌</h2>
+        <p id="rsvp-status-message" class="text-center text-gray-600 mb-4">Please let us know your presence.</p>
+        <div class="flex flex-col space-y-3">
+          <button onclick="submitRsvp('Attending')" class="bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+            Attending 💚
+          </button>
+          <button onclick="submitRsvp('Declined')" class="bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+            Sorry, Can’t Attend 💔
+          </button>
+        </div>
+      </section>
+    </main>
 
-                <div class="space-y-6">
-                    <!-- Muhurtham Block -->
-                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm bg-yellow-50">
-                        <h3 class="text-xl font-bold text-gray-800">Wedding Ceremony (Sumuhurtham)</h3>
-                        <p class="mt-2 text-gray-700">The auspicious time for the marriage ceremony.</p>
-                        <ul class="list-disc list-inside mt-2 ml-4 text-gray-600">
-                            <li><b class="text-gray-800">Date:</b> Thursday, 16th October 2025</li>
-                            <li><b class="text-gray-800">Time:</b> 8:18 p.m.</li>
-                        </ul>
-                    </div>
+    <footer class="text-center text-xs text-gray-500 mt-6">
+      Made with ❤ for Bavireddy’s Wedding
+    </footer>
+  </div>
 
-                    <!-- Dinner Block -->
-                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm bg-yellow-50">
-                        <h3 class="text-xl font-bold text-gray-800">Dinner</h3>
-                        <p class="mt-2 text-gray-700">Join us for dinner before the ceremony.</p>
-                        <ul class="list-disc list-inside mt-2 ml-4 text-gray-600">
-                            <li><b class="text-gray-800">Date:</b> Thursday, 16th October 2025</li>
-                            <li><b class="text-gray-800">Time:</b> 8:00 p.m. onwards</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Venue Block -->
-                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm bg-yellow-50">
-                        <h3 class="text-xl font-bold text-gray-800">Venue</h3>
-                        <p class="mt-2 text-gray-700 font-medium">Sai Kalyana Mandapam</p>
-                        <p class="text-sm text-gray-600">Percharla Village, Medikonduru Mdl, Guntur Dist.</p>
-                        <a href="https://maps.google.com/?q=Sai+Kalyana+Mandapam+Percharla" target="_blank" class="mt-3 inline-flex items-center text-blue-600 hover:text-blue-800 transition duration-150 font-semibold">
-                            <!-- Map Pin Icon (Lucide SVG) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-1"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            Get Directions (Google Maps)
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Page 3: Menu (New Section) -->
-            <!-- Removed the 'menu-bg' class and the 'menu-overlay' div for a clean white background -->
-            <section id="menu" class="page invitation-card p-8 rounded-2xl">
-                <h2 class="main-title text-3xl font-bold text-center mb-6">A Grand Feast: Dinner Menu</h2>
-                <p class="text-center text-gray-700 mb-6 font-medium italic">Prepared with traditional recipes, showcasing the rich flavors of South Indian vegetarian cuisine.</p>
-
-                <div class="space-y-6">
-                    
-                    <!-- Category 1: Appetizers & Live Counters -->
-                    <div class="menu-item-card p-4 rounded-lg bg-yellow-50 shadow-md">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                            <span class="text-3xl mr-2" style="color: var(--primary-red);">&#x1F32D;</span> Starters & Snacks (Live Counter)
-                        </h3>
-                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
-                            <li>Masala Vada & Punugulu</li>
-                            <li>Paneer Tikka Skewers</li>
-                            <li>Crispy Corn Basket</li>
-                            <li>Assorted Cut Fruit Platter</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Category 2: Traditional South Indian Veg Meals -->
-                    <div class="menu-item-card p-4 rounded-lg bg-yellow-50 shadow-md">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                            <span class="text-3xl mr-2" style="color: var(--primary-red);">&#x1F372;</span> Main Course - Andhra Special
-                        </h3>
-                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
-                            <li><b>South Indian Veg Meals</b> (Traditional Full Course with all accompaniments)</li>
-                            <li>Steam Rice & Ghee Rice</li>
-                            <li>Pulihara / Lemon Rice</li>
-                            <li>Variety of Rotis, Poori, and Flaky Parathas</li>
-                        </ul>
-                    </div>
-
-                    <!-- Category 3: Curries & Gravies -->
-                    <div class="menu-item-card p-4 rounded-lg bg-yellow-50 shadow-md">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                            <span class="text-3xl mr-2" style="color: var(--primary-red);">&#x1F35B;</span> Curries & Gravies
-                        </h3>
-                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
-                            <li>Tomato Pappu (Dal) & Palakura Pappu</li>
-                            <li>Vankaya Fry (Brinjal) & Gutti Vankaya Masala</li>
-                            <li>Paneer Butter Masala (North Indian Style)</li>
-                            <li>Sambar, Majjiga Pulusu, & Spicy Rasam</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Category 4: Desserts & Beverages -->
-                    <div class="menu-item-card p-4 rounded-lg bg-yellow-50 shadow-md">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                            <span class="text-3xl mr-2" style="color: var(--primary-red);">&#x1F368;</span> Desserts & Beverages
-                        </h3>
-                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
-                            <li>Badam Kheer / Payasam (Hot)</li>
-                            <li>Assorted Indian Sweets (Jalebi, Gulab Jamun)</li>
-                            <li>Three Flavours of Ice Cream</li>
-                            <li>Refreshing Lassi & Cold Beverages</li>
-                        </ul>
-                    </div>
-
-                </div>
-                <p class="text-center text-xs text-gray-700 mt-6 font-medium">We look forward to sharing this wonderful meal with you!</p>
-            </section>
-            
-            <!-- Page 4: RSVP -->
-            <section id="rsvp" class="page invitation-card p-8 rounded-2xl">
-                <h2 class="main-title text-3xl font-bold text-center mb-4">RSVP (Accept/Declined)</h2>
-                
-                <div id="rsvp-status" class="rsvp-container text-center mb-6 p-6 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 flex flex-col items-center justify-center">
-                    <p class="text-gray-600 mb-2" id="rsvp-status-message">Loading your RSVP status...</p>
-                    <p class="text-sm text-gray-500">Please let us know your attendance status below.</p>
-                </div>
-
-                <div id="rsvp-controls" class="space-y-4">
-                    <button onclick="submitRsvp('Attending')" class="w-full py-3 bg-green-600 text-white font-semibold rounded-lg shadow-xl hover:bg-green-700 transition duration-200 transform hover:scale-[1.01]">
-                        Attending (Accept)
-                    </button>
-                    <!-- Updated Button Text for polite refusal -->
-                    <button onclick="submitRsvp('Declined')" class="w-full py-3 bg-red-600 text-white font-semibold rounded-lg shadow-xl hover:bg-red-700 transition duration-200 transform hover:scale-[1.01]">
-                        Sorry, Unable to Attend
-                    </button>
-                    <p class="text-xs text-center text-gray-500 mt-4">Your RSVP is important for our planning. Thank you!</p>
-                </div>
-                
-                <!-- AI Wish Generator removed here as requested -->
-
-                <div id="message-box" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-                    <div class="bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full text-center">
-                        <p id="message-text" class="text-gray-800 font-medium mb-4"></p>
-                        <button onclick="hideMessage()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Close</button>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="text-center text-xs text-gray-500 mt-8 py-4">
-            User ID: <span id="user-id">Loading...</span><br>
-            Made with love for Bavireddy's Wedding
-        </footer>
+  <!-- Message Box -->
+  <div id="message-box" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full text-center border-4 border-yellow-400">
+      <p id="message-text" class="text-gray-800 font-medium mb-4"></p>
+      <button onclick="hideMessage()" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition">Close</button>
     </div>
+  </div>
 
-    <!-- 
-        1. NON-MODULE SCRIPT (Standard JS): Contains core functions (navigate, showMessage, copyToClipboard) 
-           that MUST be available immediately for the HTML 'onclick' attributes to work in all environments.
-    -->
-    <script>
-        /**
-         * Navigation Logic: Shows the selected page and highlights the active button.
-         * This function is placed globally to ensure it works instantly with HTML onclick.
-         */
-        window.navigate = (pageId, buttonElement) => {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+  <script>
+    // Response pop-up
+    function submitRsvp(status) {
+      if (status === 'Attending') {
+        showMessage("🎉 Yay! We're thrilled you'll be joining us on our big day! 💕\n\nYour presence will make the celebration truly special. 🌸");
+      } else {
+        showMessage("💖 Thank you for your kind response!\n\nWe’ll miss you, but your blessings mean a lot to us. 🙏🌺");
+      }
+    }
 
-            // Deactivate all navigation buttons
-            document.querySelectorAll('.nav-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+    function showMessage(text) {
+      const messageBox = document.getElementById('message-box');
+      const messageText = document.getElementById('message-text');
+      messageText.innerText = text;
+      messageBox.classList.remove('hidden');
+      setTimeout(() => messageBox.classList.add('visible', 'flex'), 50);
+      setTimeout(() => hideMessage(), 5000);
+    }
 
-            // Show the target page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Activate the clicked button
-            if (buttonElement) {
-                buttonElement.classList.add('active');
-            }
-        };
+    function hideMessage() {
+      const box = document.getElementById('message-box');
+      box.classList.remove('visible');
+      setTimeout(() => {
+        box.classList.add('hidden');
+        box.classList.remove('flex');
+      }, 400);
+    }
 
-        /** Displays a custom modal message instead of alert() */
-        window.showMessage = (text) => {
-            document.getElementById('message-text').innerText = text;
-            document.getElementById('message-box').classList.remove('hidden');
-            document.getElementById('message-box').classList.add('flex');
-        };
+    // Background animation
+    function initBackground() {
+      const petals = document.getElementById('petal-container');
+      const balloons = document.getElementById('balloon-container');
+      const colors = ['#FF6B6B', '#FDCB6E', '#74C69D', '#9b5de5', '#FFB4A2'];
 
-        window.hideMessage = () => {
-            document.getElementById('message-box').classList.add('hidden');
-            document.getElementById('message-box').classList.remove('flex');
-        };
+      for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.style.left = ${Math.random() * 100}vw;
+        p.style.width = p.style.height = ${Math.random() * 10 + 5}px;
+        p.style.animationDuration = ${10 + Math.random() * 10}s;
+        petals.appendChild(p);
+      }
 
-        /** Copies text content of an element to the clipboard. */
-        window.copyToClipboard = (elementId) => {
-            const textToCopy = document.getElementById(elementId).innerText;
-            try {
-                // Use execCommand for broader compatibility in iframe environments
-                const tempInput = document.createElement('textarea');
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                window.showMessage("Wish copied to clipboard!");
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-                window.showMessage("Failed to copy. Please select and copy manually.");
-            }
-        };
+      for (let i = 0; i < 10; i++) {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.style.background = colors[Math.floor(Math.random() * colors.length)];
+        b.style.left = ${Math.random() * 100}vw;
+        b.style.animationDuration = ${15 + Math.random() * 10}s;
+        balloons.appendChild(b);
+      }
+    }
 
-        // Initial navigation setup to show the first page on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            window.navigate('invitation', document.getElementById('nav-invitation'));
-        });
-    </script>
+    // Navigation
+    function navigate(pageId, btn) {
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      document.getElementById(pageId).classList.remove('hidden');
+      document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
 
-    <!-- 
-        2. MODULE SCRIPT: Contains Firebase logic which require dynamic imports.
-    -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        
-        // --- IMPORTANT: FOR VERCEL/GITHUB DEPLOYMENT ---
-        // The __firebase_config variable only exists in the Canvas environment.
-        // To deploy publicly, you MUST replace the placeholder below with your actual Firebase config keys.
-        
-        // This is a placeholder structure. REPLACE ALL VALUES with your own project keys.
-        const PUBLIC_FIREBASE_CONFIG = {
-            apiKey: "YOUR_API_KEY", // <-- REPLACE THIS
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com", // <-- REPLACE THIS
-            projectId: "YOUR_PROJECT_ID", // <-- REPLACE THIS
-            storageBucket: "YOUR_PROJECT_ID.appspot.com", // <-- REPLACE THIS
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // <-- REPLACE THIS
-            appId: "YOUR_APP_ID" // <-- REPLACE THIS
-        };
-        
-        // Get config: Use the Canvas config if available, otherwise use the public config.
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : PUBLIC_FIREBASE_CONFIG;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : firebaseConfig.projectId || 'default-app-id'; // Use projectId as fallback appId
-        
-        let app, db, auth;
-        let userId = 'loading';
-        let isAuthReady = false;
-
-        /** Initializes Firebase, handles authentication, and sets up user state. */
-        async function initializeFirebase() {
-            // Check if essential config elements are missing (e.g., apiKey is required for basic operations)
-            if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
-                console.error("Firebase config is missing or invalid. Check PUBLIC_FIREBASE_CONFIG.");
-                // Show a clear message to the user that they need to update the keys
-                window.showMessage("RSVP system error: Firebase configuration keys are missing. If deploying publicly, please update the placeholder keys in the code (search for YOUR_API_KEY).");
-                return;
-            }
-
-            try {
-                setLogLevel('Debug');
-                
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                
-                await setPersistence(auth, browserSessionPersistence);
-
-                await new Promise((resolve) => {
-                    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-                        if (user) {
-                            userId = user.uid;
-                        } else {
-                            // For public deployment (outside Canvas), force anonymous sign-in to get a UID
-                            try {
-                                const anonUserCredential = await signInAnonymously(auth);
-                                userId = anonUserCredential.user.uid;
-                            } catch (e) {
-                                console.error("Anonymous Sign-In Failed:", e);
-                                // If sign-in fails, we cannot proceed with Firestore
-                                window.showMessage("Authentication Failed. Please check your Firebase Auth setup (Anonymous sign-in must be enabled).");
-                                unsubscribe();
-                                return; 
-                            }
-                        }
-                        
-                        document.getElementById('user-id').textContent = userId;
-                        isAuthReady = true;
-                        
-                        setupRsvpListener();
-                        initializeBackgroundEffects(); 
-                        
-                        unsubscribe();
-                        resolve();
-                    });
-                });
-
-            } catch (error) {
-                console.error("Firebase Initialization or Auth Error:", error);
-                window.showMessage("Failed to initialize the app. Check console for database configuration errors.");
-            }
-        }
-
-        /** Submits the user's RSVP status to Firestore. */
-        window.submitRsvp = async (status) => {
-            if (!isAuthReady || !db || !userId) {
-                window.showMessage("Please wait for the application to load.");
-                return;
-            }
-
-            const rsvpRef = doc(db, 'artifacts', appId, 'public', 'data', 'rsvps', userId);
-            
-            const statusElement = document.getElementById('rsvp-status-message');
-            statusElement.textContent = `Submitting '${status}'...`;
-
-            try {
-                const timestamp = new Date().toISOString();
-                
-                await setDoc(rsvpRef, {
-                    userId: userId,
-                    status: status, // 'Attending' or 'Declined'
-                    timestamp: timestamp,
-                    name: `Guest_${userId.substring(0, 8)}`,
-                });
-
-                let successMessage;
-                if (status === 'Declined') {
-                    successMessage = "Thank you for letting us know! We'll miss you, but appreciate you informing us of your status.";
-                } else {
-                    successMessage = "Wonderful! Your presence is confirmed. Thank you!";
-                }
-
-                window.showMessage(successMessage);
-
-            } catch (e) {
-                console.error("Error setting RSVP document: ", e);
-                // This is likely the permission error, guide user back to the rule check.
-                window.showMessage("Failed to submit RSVP. Please verify your Firebase Security Rules (must allow authenticated users to write to the 'rsvps' collection).");
-            }
-        };
-
-        /** Sets up a real-time listener for the user's RSVP status. */
-        function setupRsvpListener() {
-            if (!isAuthReady || !db || !userId) return;
-
-            const rsvpRef = doc(db, 'artifacts', appId, 'public', 'data', 'rsvps', userId);
-            const statusElement = document.getElementById('rsvp-status-message');
-            
-            onSnapshot(rsvpRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    const status = data.status;
-                    
-                    let displayStatus = status;
-                    let displayClass = status === 'Attending' ? 'text-green-600' : 'text-red-600';
-
-                    if (status === 'Declined') {
-                        displayStatus = "Not Attending (Miss You!)";
-                    }
-
-                    statusElement.innerHTML = `Your current status is: <span class="font-extrabold text-xl ${displayClass}">${displayStatus}</span>`;
-                } else {
-                    statusElement.textContent = "You have not responded yet. Please choose an option above.";
-                }
-            }, (error) => {
-                console.error("Error listening to RSVP document: ", error);
-                // This error is also likely the permission error.
-                statusElement.textContent = "Error loading your RSVP status. Please check Firebase security rules.";
-            });
-        }
-        
-        /** Initializes both falling petals and floating balloons */
-        function initializeBackgroundEffects() {
-            const petalContainer = document.getElementById('petal-container');
-            const balloonContainer = document.getElementById('balloon-container');
-            
-            const numberOfPetals = 30;
-            const numberOfBalloons = 10;
-            
-            // Petal Initialization (Downward Motion)
-            for (let i = 0; i < numberOfPetals; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-
-                const size = Math.floor(Math.random() * 8) + 5; 
-                petal.style.width = `${size}px`;
-                petal.style.height = `${size}px`;
-
-                petal.style.left = `${Math.random() * 100}vw`;
-
-                const duration = Math.floor(Math.random() * 12) + 8;
-                const delay = Math.floor(Math.random() * -30) - 1; 
-                petal.style.animationDuration = `${duration}s, ${duration/2}s`;
-                petal.style.animationDelay = `${delay}s`;
-
-                petalContainer.appendChild(petal);
-            }
-            
-            // Balloon Initialization (Upward Motion)
-            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#F5D65C', '#FFA07A'];
-
-            for (let i = 0; i < numberOfBalloons; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                balloon.style.backgroundColor = randomColor;
-
-                balloon.style.left = `${Math.random() * 100}vw`;
-
-                const duration = Math.floor(Math.random() * 20) + 15;
-                const delay = Math.floor(Math.random() * -35) - 1;
-                
-                balloon.style.animationDuration = `${duration}s`;
-                balloon.style.animationDelay = `${delay}s`;
-
-                balloonContainer.appendChild(balloon);
-            }
-        }
-
-        // Initialize Firebase on window load
-        window.addEventListener('load', initializeFirebase);
-
-    </script>
+    document.addEventListener('DOMContentLoaded', initBackground);
+  </script>
 </body>
 </html>
