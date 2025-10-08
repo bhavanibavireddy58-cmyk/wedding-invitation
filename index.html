@@ -38,8 +38,10 @@
       border: 3px solid var(--accent-gold);
       border-radius: 1.25rem;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+      opacity: 1;
     }
+
     .invitation-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
@@ -49,6 +51,15 @@
       color: var(--primary-red);
       font-weight: 700;
       border-bottom: 3px solid var(--accent-gold);
+    }
+
+    .page {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .page.active {
+      opacity: 1;
     }
 
     #petal-container, #balloon-container {
@@ -117,6 +128,7 @@
       opacity: 0;
       transition: opacity 0.4s ease-in-out;
     }
+
     #message-box.visible {
       opacity: 1;
     }
@@ -223,7 +235,7 @@
   </div>
 
   <script>
-    // Response pop-up
+    // RSVP response popup
     function submitRsvp(status) {
       if (status === 'Attending') {
         showMessage("🎉 Yay! We're thrilled you'll be joining us on our big day! 💕\n\nYour presence will make the celebration truly special. 🌸");
@@ -237,7 +249,8 @@
       const messageText = document.getElementById('message-text');
       messageText.innerText = text;
       messageBox.classList.remove('hidden');
-      setTimeout(() => messageBox.classList.add('visible', 'flex'), 50);
+      messageBox.classList.add('flex');
+      setTimeout(() => messageBox.classList.add('visible'), 50);
       setTimeout(() => hideMessage(), 5000);
     }
 
@@ -259,9 +272,11 @@
       for (let i = 0; i < 25; i++) {
         const p = document.createElement('div');
         p.className = 'petal';
-        p.style.left = ${Math.random() * 100}vw;
-        p.style.width = p.style.height = ${Math.random() * 10 + 5}px;
-        p.style.animationDuration = ${10 + Math.random() * 10}s;
+        p.style.left = `${Math.random() * 100}vw`;
+        const size = Math.random() * 10 + 5;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.animationDuration = `${10 + Math.random() * 10}s`;
         petals.appendChild(p);
       }
 
@@ -269,16 +284,21 @@
         const b = document.createElement('div');
         b.className = 'balloon';
         b.style.background = colors[Math.floor(Math.random() * colors.length)];
-        b.style.left = ${Math.random() * 100}vw;
-        b.style.animationDuration = ${15 + Math.random() * 10}s;
+        b.style.left = `${Math.random() * 100}vw`;
+        b.style.animationDuration = `${15 + Math.random() * 10}s`;
         balloons.appendChild(b);
       }
     }
 
     // Navigation
     function navigate(pageId, btn) {
-      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-      document.getElementById(pageId).classList.remove('hidden');
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.add('hidden');
+        p.classList.remove('active');
+      });
+      const selectedPage = document.getElementById(pageId);
+      selectedPage.classList.remove('hidden');
+      setTimeout(() => selectedPage.classList.add('active'), 10);
       document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
